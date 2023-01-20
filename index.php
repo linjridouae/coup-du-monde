@@ -61,23 +61,23 @@
             equipe2:<input type="number" name="equipe2-matche3">   <!-- C-->
             <input type="number"name="equipe4-matche3">equipe4<br> <!-- CAN-->
         </div>
-        <input type="submit" value="sumuler" name="submit"> 
+        <input type="submit" value="Simuler" name="submit"> 
     </form>
     <table>
     <tbody>
             <tr>
             <th>Equipes</th>
-                <th>pts</th>
-                <th>MJ</th>
-                <th>MG</th>
-                <th>Null</th>
-                <th>MP</th>
-                <th>BM</th>
-                <th>BE</th>
-                <th>dif</th>
+                <th>PTS.</th>
+                <th>PAR.</th>
+                <th>GAN.</th>
+                <th>EMP.</th>
+                <th>PER.</th>
+                <th>G.F.</th>
+                <th>G.C.</th>
+                <th>+/-</th>
             </tr>
 
-<!--************************************************************** PHP ************************************************************-->
+<!-- =================================================================PHP ===================================================================================-->
 
     <?php
 
@@ -85,188 +85,188 @@
 
 
 if(isset($_POST['submit'])){
-    $equipes = ["equipe1"=>["nom"=>"equipe1","point"=>0,"MJ"=>0,"MG"=>0,"null"=>0,"MP"=>0,"BM"=>0,"BE"=>0,"dif"=>0],
-    "equipe2"=>["nom"=>"equipe2","point"=>0,"MJ"=>0,"MG"=>0,"null"=>0,"MP"=>0,"BM"=>0,"BE"=>0,"dif"=>0],
-    "equipe3"=>["nom"=>"equipe3","point"=>0,"MJ"=>0,"MG"=>0,"null"=>0,"MP"=>0,"BM"=>0,"BE"=>0,"dif"=>0],
-    "equipe4"=>["nom"=>"equipe4","point"=>0,"MJ"=>0,"MG"=>0,"null"=>0,"MP"=>0,"BM"=>0,"BE"=>0,"dif"=>0]];
-    // MATCHE1
+    $equipes = ["equipe1"=>["nom"=>"equipe1","point"=>0,"PAR."=>0,"GAN."=>0,"EMP."=>0,"PER."=>0,"G.F."=>0,"G.C."=>0,"+/-"=>0],
+    "equipe2"=>["nom"=>"equipe2","point"=>0,"PAR."=>0,"GAN."=>0,"EMP."=>0,"PER."=>0,"G.F."=>0,"G.C."=>0,"+/-"=>0],
+    "equipe3"=>["nom"=>"equipe3","point"=>0,"PAR."=>0,"GAN."=>0,"EMP."=>0,"PER."=>0,"G.F."=>0,"G.C."=>0,"+/-"=>0],
+    "equipe4"=>["nom"=>"equipe4","point"=>0,"PAR."=>0,"GAN."=>0,"EMP."=>0,"PER."=>0,"G.F."=>0,"G.C."=>0,"+/-"=>0]];
+    // ****************************************************MATCHE1*****************************************************************
     if(@$_POST['equipe1-matche1'] ==''and @$_POST['equipe2-matche1']==''){
         $equipes["equipe1"]["point"]+=0;
         $equipes["equipe2"]["point"]+=0;
     }elseif(@$_POST['equipe1-matche1'] > @$_POST['equipe2-matche1']){
         $equipes["equipe1"]["point"]+=3;
-        $equipes["equipe1"]["MJ"]+=1;
-        $equipes["equipe2"]["MJ"]+=1;
-        $equipes["equipe1"]["MG"]+=1;
-        $equipes["equipe2"]["MP"]+=1;
-        $equipes["equipe1"]["BM"]+=$_POST['equipe1-matche1'];
-        $equipes["equipe2"]["BE"]+=$_POST['equipe1-matche1'];
+        $equipes["equipe1"]["PAR."]+=1;
+        $equipes["equipe2"]["PAR."]+=1;
+        $equipes["equipe1"]["GAN."]+=1;
+        $equipes["equipe2"]["PER."]+=1;
+        $equipes["equipe1"]["G.F."]+=$_POST['equipe1-matche1'];
+        $equipes["equipe2"]["G.C."]+=$_POST['equipe1-matche1'];
     }elseif(@$_POST['equipe1-matche1'] < @$_POST['equipe2-matche1']){
         $equipes["equipe2"]["point"]+=3;
-        $equipes["equipe1"]["MJ"]+=1;
-        $equipes["equipe2"]["MJ"]+=1;
-        $equipes["equipe2"]["MG"]+=1;
-        $equipes["equipe1"]["MP"]+=1;
-        $equipes["equipe2"]["BM"]+=$_POST['equipe2-matche1'];
-        $equipes["equipe1"]["BE"]+=$_POST['equipe2-matche1'];
+        $equipes["equipe1"]["PAR."]+=1;
+        $equipes["equipe2"]["PAR."]+=1;
+        $equipes["equipe2"]["GAN."]+=1;
+        $equipes["equipe1"]["PER."]+=1;
+        $equipes["equipe2"]["G.F."]+=$_POST['equipe2-matche1'];
+        $equipes["equipe1"]["G.C."]+=$_POST['equipe2-matche1'];
     }elseif(@$_POST['equipe1-matche1'] == @$_POST['equipe2-matche1']){
         $equipes["equipe1"]["point"]+=1;
         $equipes["equipe2"]["point"]+=1;
-        $equipes["equipe1"]["MJ"]+=1;
-        $equipes["equipe2"]["MJ"]+=1;
-        $equipes["equipe1"]["null"]+=1;
-        $equipes["equipe2"]["null"]+=1;
+        $equipes["equipe1"]["PAR."]+=1;
+        $equipes["equipe2"]["PAR."]+=1;
+        $equipes["equipe1"]["EMP."]+=1;
+        $equipes["equipe2"]["EMP."]+=1;
     }
-// MATCHE2
+// *************************************************************MATCHE2**************************************************************
     if(@$_POST['equipe3-matche1'] ==''and @$_POST['equipe4-matche1']==''){
         $equipes["equipe3"]["point"]+=0;
         $equipes["equipe4"]["point"]+=0;
     }elseif(@$_POST['equipe3-matche1'] > @$_POST['equipe4-matche1']){
         $equipes["equipe3"]["point"]+=3;
-        $equipes["equipe3"]["MJ"]+=1;
-        $equipes["equipe4"]["MJ"]+=1;
-        $equipes["equipe3"]["MG"]+=1;
-        $equipes["equipe4"]["MP"]+=1;
-        $equipes["equipe3"]["BM"]+=$_POST['equipe3-matche1'];
-        $equipes["equipe4"]["BE"]+=$_POST['equipe3-matche1'];
+        $equipes["equipe3"]["PAR."]+=1;
+        $equipes["equipe4"]["PAR."]+=1;
+        $equipes["equipe3"]["GAN."]+=1;
+        $equipes["equipe4"]["PER."]+=1;
+        $equipes["equipe3"]["G.F."]+=$_POST['equipe3-matche1'];
+        $equipes["equipe4"]["G.C."]+=$_POST['equipe3-matche1'];
     }elseif(@$_POST['equipe3-matche1'] < @$_POST['equipe4-matche1']){
         $equipes["equipe4"]["point"]+=3;
-        $equipes["equipe3"]["MJ"]+=1;
-        $equipes["equipe4"]["MJ"]+=1;
-        $equipes["equipe4"]["MG"]+=1;
-        $equipes["equipe3"]["MP"]+=1;
-        $equipes["equipe4"]["BM"]+=$_POST['equipe4-matche1'];
-        $equipes["equipe3"]["BE"]+=$_POST['equipe4-matche1'];
+        $equipes["equipe3"]["PAR."]+=1;
+        $equipes["equipe4"]["PAR."]+=1;
+        $equipes["equipe4"]["GAN."]+=1;
+        $equipes["equipe3"]["PER."]+=1;
+        $equipes["equipe4"]["G.F."]+=$_POST['equipe4-matche1'];
+        $equipes["equipe3"]["G.C."]+=$_POST['equipe4-matche1'];
     }elseif(@$_POST['equipe3-matche1'] == @$_POST['equipe4-matche1']){
         $equipes["equipe3"]["point"]+=1;
         $equipes["equipe4"]["point"]+=1;
-        $equipes["equipe3"]["MJ"]+=1;
-        $equipes["equipe4"]["MJ"]+=1;
-        $equipes["equipe3"]["null"]+=1;
-        $equipes["equipe4"]["null"]+=1;
+        $equipes["equipe3"]["PAR."]+=1;
+        $equipes["equipe4"]["PAR."]+=1;
+        $equipes["equipe3"]["EMP."]+=1;
+        $equipes["equipe4"]["EMP."]+=1;
     }
-//  MATCHE3
+// ************************************************************** MATCHE3********************************************************************
     if(@$_POST['equipe1-matche2'] ==''and @$_POST['equipe4-matche2']==''){
         $equipes["equipe1"]["point"]+=0;
         $equipes["equipe4"]["point"]+=0;
     }elseif(@$_POST['equipe1-matche2'] > @$_POST['equipe4-matche2']){
         $equipes["equipe1"]["point"]+=3;
-        $equipes["equipe1"]["MJ"]+=1;
-        $equipes["equipe4"]["MJ"]+=1;
-        $equipes["equipe1"]["MG"]+=1;
-        $equipes["equipe4"]["MP"]+=1;
-        $equipes["equipe1"]["BM"]+=$_POST['equipe1-matche2'];
-        $equipes["equipe4"]["BE"]+=$_POST['equipe1-matche2'];
+        $equipes["equipe1"]["PAR."]+=1;
+        $equipes["equipe4"]["PAR."]+=1;
+        $equipes["equipe1"]["GAN."]+=1;
+        $equipes["equipe4"]["PER."]+=1;
+        $equipes["equipe1"]["G.F."]+=$_POST['equipe1-matche2'];
+        $equipes["equipe4"]["G.C."]+=$_POST['equipe1-matche2'];
     }elseif(@$_POST['equipe1-matche2'] < @$_POST['equipe4-matche2']){
         $equipes["equipe4"]["point"]+=3;
-        $equipes["equipe1"]["MJ"]+=1;
-        $equipes["equipe4"]["MJ"]+=1;
-        $equipes["equipe4"]["MG"]+=1;
-        $equipes["equipe1"]["MP"]+=1;
-        $equipes["equipe4"]["BM"]+=$_POST['equipe4-matche2'];
-        $equipes["equipe1"]["BE"]+=$_POST['equipe4-matche2'];
+        $equipes["equipe1"]["PAR."]+=1;
+        $equipes["equipe4"]["PAR."]+=1;
+        $equipes["equipe4"]["GAN."]+=1;
+        $equipes["equipe1"]["PER."]+=1;
+        $equipes["equipe4"]["G.F."]+=$_POST['equipe4-matche2'];
+        $equipes["equipe1"]["G.C."]+=$_POST['equipe4-matche2'];
     }elseif(@$_POST['equipe1-matche2'] == @$_POST['equipe4-matche2']){
         $equipes["equipe1"]["point"]+=1;
         $equipes["equipe4"]["point"]+=1;
-        $equipes["equipe1"]["MJ"]+=1;
-        $equipes["equipe4"]["MJ"]+=1;
-        $equipes["equipe1"]["null"]+=1;
-        $equipes["equipe4"]["null"]+=1;
+        $equipes["equipe1"]["PAR."]+=1;
+        $equipes["equipe4"]["PAR."]+=1;
+        $equipes["equipe1"]["EMP."]+=1;
+        $equipes["equipe4"]["EMP."]+=1;
     }
- //  MATCHE4
+ //  ******************************************************************MATCHE4*************************************************************
     if(@$_POST['equipe2-matche2'] ==''and @$_POST['equipe3-matche2']==''){
         $equipes["equipe2"]["point"]+=0;
         $equipes["equipe3"]["point"]+=0;
     }elseif(@$_POST['equipe2-matche2'] > @$_POST['equipe3-matche2']){
         $equipes["equipe2"]["point"]+=3;
-        $equipes["equipe2"]["MJ"]+=1;
-        $equipes["equipe3"]["MJ"]+=1;
-        $equipes["equipe2"]["MG"]+=1;
-        $equipes["equipe3"]["MP"]+=1;
-        $equipes["equipe2"]["BM"]+=$_POST['equipe2-matche2'];
-        $equipes["equipe3"]["BE"]+=$_POST['equipe2-matche2'];
+        $equipes["equipe2"]["PAR."]+=1;
+        $equipes["equipe3"]["PAR."]+=1;
+        $equipes["equipe2"]["GAN."]+=1;
+        $equipes["equipe3"]["PER."]+=1;
+        $equipes["equipe2"]["G.F."]+=$_POST['equipe2-matche2'];
+        $equipes["equipe3"]["G.C."]+=$_POST['equipe2-matche2'];
     }elseif(@$_POST['equipe2-matche2'] < @$_POST['equipe3-matche2']){
         $equipes["equipe3"]["point"]+=3;
-        $equipes["equipe2"]["MJ"]+=1;
-        $equipes["equipe3"]["MJ"]+=1;
-        $equipes["equipe3"]["MG"]+=1;
-        $equipes["equipe2"]["MP"]+=1;
-        $equipes["equipe3"]["BM"]+=$_POST['equipe3-matche2'];
-        $equipes["equipe2"]["BE"]+=$_POST['equipe3-matche2'];
+        $equipes["equipe2"]["PAR."]+=1;
+        $equipes["equipe3"]["PAR."]+=1;
+        $equipes["equipe3"]["GAN."]+=1;
+        $equipes["equipe2"]["PER."]+=1;
+        $equipes["equipe3"]["G.F."]+=$_POST['equipe3-matche2'];
+        $equipes["equipe2"]["G.C."]+=$_POST['equipe3-matche2'];
     }elseif(@$_POST['equipe2-matche2'] == @$_POST['equipe3-matche2']){
         $equipes["equipe2"]["point"]+=1;
         $equipes["equipe3"]["point"]+=1;
-        $equipes["equipe2"]["MJ"]+=1;
-        $equipes["equipe3"]["MJ"]+=1;
-        $equipes["equipe2"]["null"]+=1;
-        $equipes["equipe3"]["null"]+=1;
+        $equipes["equipe2"]["PAR."]+=1;
+        $equipes["equipe3"]["PAR."]+=1;
+        $equipes["equipe2"]["EMP."]+=1;
+        $equipes["equipe3"]["EMP."]+=1;
     }
-  //  MATCHE5
+  //  ***************************************************************MATCHE5**********************************************************
     if(@$_POST['equipe1-matche3'] ==''and @$_POST['equipe3-matche3']==''){
         $equipes["equipe1"]["point"]+=0;
         $equipes["equipe3"]["point"]+=0;
     }elseif(@$_POST['equipe1-matche3'] > @$_POST['equipe3-matche3']){
         $equipes["equipe1"]["point"]+=3;
-        $equipes["equipe1"]["MJ"]+=1;
-        $equipes["equipe3"]["MJ"]+=1;
-        $equipes["equipe1"]["MG"]+=1;
-        $equipes["equipe3"]["MP"]+=1;
-        $equipes["equipe1"]["BM"]+=$_POST['equipe1-matche3'];
-        $equipes["equipe3"]["BE"]+=$_POST['equipe1-matche3'];
+        $equipes["equipe1"]["PAR."]+=1;
+        $equipes["equipe3"]["PAR."]+=1;
+        $equipes["equipe1"]["GAN."]+=1;
+        $equipes["equipe3"]["PER."]+=1;
+        $equipes["equipe1"]["G.F."]+=$_POST['equipe1-matche3'];
+        $equipes["equipe3"]["G.C."]+=$_POST['equipe1-matche3'];
     }elseif(@$_POST['equipe1-matche3'] < @$_POST['equipe3-matche3']){
         $equipes["equipe3"]["point"]+=3; 
-        $equipes["equipe1"]["MJ"]+=1;
-        $equipes["equipe3"]["MJ"]+=1;
-        $equipes["equipe3"]["MG"]+=1;
-        $equipes["equipe1"]["MP"]+=1;
-        $equipes["equipe3"]["BM"]+=$_POST['equipe3-matche3'];
-        $equipes["equipe1"]["BE"]+=$_POST['equipe3-matche3'];
+        $equipes["equipe1"]["PAR."]+=1;
+        $equipes["equipe3"]["PAR."]+=1;
+        $equipes["equipe3"]["GAN."]+=1;
+        $equipes["equipe1"]["PER."]+=1;
+        $equipes["equipe3"]["G.F."]+=$_POST['equipe3-matche3'];
+        $equipes["equipe1"]["G.C."]+=$_POST['equipe3-matche3'];
     }elseif(@$_POST['equipe1-matche3'] == @$_POST['equipe3-matche3']){
         $equipes["equipe1"]["point"]+=1;
         $equipes["equipe3"]["point"]+=1;
-        $equipes["equipe1"]["MJ"]+=1;
-        $equipes["equipe3"]["MJ"]+=1;
-        $equipes["equipe1"]["null"]+=1;
-        $equipes["equipe3"]["null"]+=1;
+        $equipes["equipe1"]["PAR."]+=1;
+        $equipes["equipe3"]["PAR."]+=1;
+        $equipes["equipe1"]["EMP."]+=1;
+        $equipes["equipe3"]["EMP."]+=1;
     }
- //  MATCHE6
+ //  *******************************************************************MATCHE6****************************************************
     if(@$_POST['equipe2-matche3'] ==''and @$_POST['equipe4-matche3']==''){
         $equipes["equipe2"]["point"]+=0;
         $equipes["equipe4"]["point"]+=0;
     }elseif(@$_POST['equipe2-matche3'] > @$_POST['equipe4-matche3']){
         $equipes["equipe2"]["point"]+=3;
-        $equipes["equipe2"]["MJ"]+=1;
-        $equipes["equipe4"]["MJ"]+=1;
-        $equipes["equipe2"]["MG"]+=1;
-        $equipes["equipe4"]["MP"]+=1;
-        $equipes["equipe2"]["BM"]+=$_POST['equipe2-matche3'];
-        $equipes["equipe4"]["BE"]+=$_POST['equipe2-matche3'];
+        $equipes["equipe2"]["PAR."]+=1;
+        $equipes["equipe4"]["PAR."]+=1;
+        $equipes["equipe2"]["GAN."]+=1;
+        $equipes["equipe4"]["PER."]+=1;
+        $equipes["equipe2"]["G.F."]+=$_POST['equipe2-matche3'];
+        $equipes["equipe4"]["G.C."]+=$_POST['equipe2-matche3'];
     }elseif(@$_POST['equipe2-matche3'] < @$_POST['equipe4-matche3']){
         $equipes["equipe4"]["point"]+=3;
-        $equipes["equipe2"]["MJ"]+=1;
-        $equipes["equipe4"]["MJ"]+=1;
-        $equipes["equipe4"]["MG"]+=1;
-        $equipes["equipe2"]["MP"]+=1;
-        $equipes["equipe4"]["BM"]+=$_POST['equipe4-matche3'];
-        $equipes["equipe2"]["BE"]+=$_POST['equipe4-matche3'];
+        $equipes["equipe2"]["PAR."]+=1;
+        $equipes["equipe4"]["PAR."]+=1;
+        $equipes["equipe4"]["GAN."]+=1;
+        $equipes["equipe2"]["PER."]+=1;
+        $equipes["equipe4"]["G.F."]+=$_POST['equipe4-matche3'];
+        $equipes["equipe2"]["G.C."]+=$_POST['equipe4-matche3'];
     }elseif(@$_POST['equipe2-matche3'] == @$_POST['equipe4-matche3']){
         $equipes["equipe2"]["point"]+=1;
         $equipes["equipe4"]["point"]+=1;
-        $equipes["equipe2"]["MJ"]+=1;
-        $equipes["equipe4"]["MJ"]+=1;
-        $equipes["equipe2"]["null"]+=1;
-        $equipes["equipe4"]["null"]+=1;
+        $equipes["equipe2"]["PAR."]+=1;
+        $equipes["equipe4"]["PAR."]+=1;
+        $equipes["equipe2"]["EMP."]+=1;
+        $equipes["equipe4"]["EMP."]+=1;
     }
     foreach($equipes as $equipe){
         echo "<tbody><td>".$equipe["nom"]."</td>
         <td>".$equipe["point"]."</td>
-        <td>".$equipe["MJ"]."</td>
-        <td>".$equipe["MG"]."</td>
-        <td>".$equipe["null"]."</td>
-        <td>".$equipe["MP"]."</td>
-        <td>".$equipe["BM"]."</td>
-        <td>".$equipe["BE"]."</td>
-        <td>".$equipe["dif"]=$equipe["BM"]-$equipe["BE"] ."</td>
+        <td>".$equipe["PAR."]."</td>
+        <td>".$equipe["GAN."]."</td>
+        <td>".$equipe["EMP."]."</td>
+        <td>".$equipe["PER."]."</td>
+        <td>".$equipe["G.F."]."</td>
+        <td>".$equipe["G.C."]."</td>
+        <td>".$equipe["+/-"]=$equipe["G.F."]-$equipe["G.C."] ."</td>
         </tbody>";
     }
 }
