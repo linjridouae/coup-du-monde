@@ -36,35 +36,6 @@
         <div id="line2"></div>
     </div>      
     <!--********************************************** FORM *****************************************************-->
-    <!-- <form action="index.php" method="post">
-        <div>
-            <input type="text" placeholder="Maroc" name="Equipe1Tour1">
-            <input type="text" placeholder="Croitie" name="Equipe2Tour1">
-        </div>
-        <div> 
-            <input type="text" placeholder="Belgique" name="Equipe3Tour1">
-            <input type="text" placeholder="Canada" name="Equipe4Tour1">
-        </div>
-        <div>
-            <input type="text" placeholder="Maroc" name="Equipe1Tour2">
-            <input type="text" placeholder="Canada" name="Equipe4Tour2">
-        </div>
-        <div> 
-            <input type="text" placeholder="Croitie" name="Equipe2Tour2">
-            <input type="text" placeholder="Belgique" name="Equipe3Tour2">
-        </div>
-        <div>
-            <input type="text" placeholder="Maroc" name="Equipe1Tour3">
-            <input type="text" placeholder="Belgique" name="Equipe3Tour3">
-        </div>
-        <div> 
-            <input type="text" placeholder="Croitie" name="Equipe2Tour3">
-            <input type="text" placeholder="Canada" name="Equipe4Tour3">
-        </div>
-    
-        <input type="submit" value="Simuler" name="submit">
-    </form> -->
-
     <form action="index.php" method="post">
         <div>
             equipe1:<input type="number" name="equipe1-matche1">   <!-- M-->
