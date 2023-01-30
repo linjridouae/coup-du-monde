@@ -140,6 +140,8 @@ table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
+    color: #ae2929;
+    background-color: #e9e9eb;
 }
 
 td, th {
