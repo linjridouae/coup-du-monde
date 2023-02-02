@@ -60,8 +60,8 @@
         <div>
             equipe2:<input type="number" name="equipe2-matche3">   <!-- C-->
             <input type="number"name="equipe4-matche3">equipe4<br> <!-- CAN-->
-        </div>
-        <input type="submit" value="Simuler" name="submit"> 
+        </div> 
+        <input id="submit" type="submit" value="Simuler" name="submit"> 
     </form>
     <table>
     <tbody>
@@ -90,10 +90,10 @@ if(isset($_POST['submit'])){
     "equipe3"=>["nom"=>"equipe3","point"=>0,"PAR."=>0,"GAN."=>0,"EMP."=>0,"PER."=>0,"G.F."=>0,"G.C."=>0,"+/-"=>0],
     "equipe4"=>["nom"=>"equipe4","point"=>0,"PAR."=>0,"GAN."=>0,"EMP."=>0,"PER."=>0,"G.F."=>0,"G.C."=>0,"+/-"=>0]];
     // ****************************************************MATCHE1*****************************************************************
-    if(@$_POST['equipe1-matche1'] ==''and @$_POST['equipe2-matche1']==''){
+    if($_POST['equipe1-matche1'] ==''and $_POST['equipe2-matche1']==''){
         $equipes["equipe1"]["point"]+=0;
         $equipes["equipe2"]["point"]+=0;
-    }elseif(@$_POST['equipe1-matche1'] > @$_POST['equipe2-matche1']){
+    }elseif($_POST['equipe1-matche1'] > $_POST['equipe2-matche1']){
         $equipes["equipe1"]["point"]+=3;
         $equipes["equipe1"]["PAR."]+=1;
         $equipes["equipe2"]["PAR."]+=1;
@@ -101,7 +101,7 @@ if(isset($_POST['submit'])){
         $equipes["equipe2"]["PER."]+=1;
         $equipes["equipe1"]["G.F."]+=$_POST['equipe1-matche1'];
         $equipes["equipe2"]["G.C."]+=$_POST['equipe1-matche1'];
-    }elseif(@$_POST['equipe1-matche1'] < @$_POST['equipe2-matche1']){
+    }elseif($_POST['equipe1-matche1'] < $_POST['equipe2-matche1']){
         $equipes["equipe2"]["point"]+=3;
         $equipes["equipe1"]["PAR."]+=1;
         $equipes["equipe2"]["PAR."]+=1;
@@ -109,7 +109,7 @@ if(isset($_POST['submit'])){
         $equipes["equipe1"]["PER."]+=1;
         $equipes["equipe2"]["G.F."]+=$_POST['equipe2-matche1'];
         $equipes["equipe1"]["G.C."]+=$_POST['equipe2-matche1'];
-    }elseif(@$_POST['equipe1-matche1'] == @$_POST['equipe2-matche1']){
+    }elseif($_POST['equipe1-matche1'] == $_POST['equipe2-matche1']){
         $equipes["equipe1"]["point"]+=1;
         $equipes["equipe2"]["point"]+=1;
         $equipes["equipe1"]["PAR."]+=1;
@@ -118,10 +118,10 @@ if(isset($_POST['submit'])){
         $equipes["equipe2"]["EMP."]+=1;
     }
 // *************************************************************MATCHE2**************************************************************
-    if(@$_POST['equipe3-matche1'] ==''and @$_POST['equipe4-matche1']==''){
+    if($_POST['equipe3-matche1'] ==''and $_POST['equipe4-matche1']==''){
         $equipes["equipe3"]["point"]+=0;
         $equipes["equipe4"]["point"]+=0;
-    }elseif(@$_POST['equipe3-matche1'] > @$_POST['equipe4-matche1']){
+    }elseif($_POST['equipe3-matche1'] > $_POST['equipe4-matche1']){
         $equipes["equipe3"]["point"]+=3;
         $equipes["equipe3"]["PAR."]+=1;
         $equipes["equipe4"]["PAR."]+=1;
@@ -129,7 +129,7 @@ if(isset($_POST['submit'])){
         $equipes["equipe4"]["PER."]+=1;
         $equipes["equipe3"]["G.F."]+=$_POST['equipe3-matche1'];
         $equipes["equipe4"]["G.C."]+=$_POST['equipe3-matche1'];
-    }elseif(@$_POST['equipe3-matche1'] < @$_POST['equipe4-matche1']){
+    }elseif($_POST['equipe3-matche1'] < $_POST['equipe4-matche1']){
         $equipes["equipe4"]["point"]+=3;
         $equipes["equipe3"]["PAR."]+=1;
         $equipes["equipe4"]["PAR."]+=1;
@@ -137,7 +137,7 @@ if(isset($_POST['submit'])){
         $equipes["equipe3"]["PER."]+=1;
         $equipes["equipe4"]["G.F."]+=$_POST['equipe4-matche1'];
         $equipes["equipe3"]["G.C."]+=$_POST['equipe4-matche1'];
-    }elseif(@$_POST['equipe3-matche1'] == @$_POST['equipe4-matche1']){
+    }elseif($_POST['equipe3-matche1'] == $_POST['equipe4-matche1']){
         $equipes["equipe3"]["point"]+=1;
         $equipes["equipe4"]["point"]+=1;
         $equipes["equipe3"]["PAR."]+=1;
@@ -146,10 +146,10 @@ if(isset($_POST['submit'])){
         $equipes["equipe4"]["EMP."]+=1;
     }
 // ************************************************************** MATCHE3********************************************************************
-    if(@$_POST['equipe1-matche2'] ==''and @$_POST['equipe4-matche2']==''){
+    if($_POST['equipe1-matche2'] ==''and $_POST['equipe4-matche2']==''){
         $equipes["equipe1"]["point"]+=0;
         $equipes["equipe4"]["point"]+=0;
-    }elseif(@$_POST['equipe1-matche2'] > @$_POST['equipe4-matche2']){
+    }elseif($_POST['equipe1-matche2'] > $_POST['equipe4-matche2']){
         $equipes["equipe1"]["point"]+=3;
         $equipes["equipe1"]["PAR."]+=1;
         $equipes["equipe4"]["PAR."]+=1;
@@ -157,7 +157,7 @@ if(isset($_POST['submit'])){
         $equipes["equipe4"]["PER."]+=1;
         $equipes["equipe1"]["G.F."]+=$_POST['equipe1-matche2'];
         $equipes["equipe4"]["G.C."]+=$_POST['equipe1-matche2'];
-    }elseif(@$_POST['equipe1-matche2'] < @$_POST['equipe4-matche2']){
+    }elseif($_POST['equipe1-matche2'] < $_POST['equipe4-matche2']){
         $equipes["equipe4"]["point"]+=3;
         $equipes["equipe1"]["PAR."]+=1;
         $equipes["equipe4"]["PAR."]+=1;
@@ -165,7 +165,7 @@ if(isset($_POST['submit'])){
         $equipes["equipe1"]["PER."]+=1;
         $equipes["equipe4"]["G.F."]+=$_POST['equipe4-matche2'];
         $equipes["equipe1"]["G.C."]+=$_POST['equipe4-matche2'];
-    }elseif(@$_POST['equipe1-matche2'] == @$_POST['equipe4-matche2']){
+    }elseif($_POST['equipe1-matche2'] == $_POST['equipe4-matche2']){
         $equipes["equipe1"]["point"]+=1;
         $equipes["equipe4"]["point"]+=1;
         $equipes["equipe1"]["PAR."]+=1;
@@ -174,10 +174,10 @@ if(isset($_POST['submit'])){
         $equipes["equipe4"]["EMP."]+=1;
     }
  //  ******************************************************************MATCHE4*************************************************************
-    if(@$_POST['equipe2-matche2'] ==''and @$_POST['equipe3-matche2']==''){
+    if($_POST['equipe2-matche2'] ==''and $_POST['equipe3-matche2']==''){
         $equipes["equipe2"]["point"]+=0;
         $equipes["equipe3"]["point"]+=0;
-    }elseif(@$_POST['equipe2-matche2'] > @$_POST['equipe3-matche2']){
+    }elseif($_POST['equipe2-matche2'] > $_POST['equipe3-matche2']){
         $equipes["equipe2"]["point"]+=3;
         $equipes["equipe2"]["PAR."]+=1;
         $equipes["equipe3"]["PAR."]+=1;
@@ -185,7 +185,7 @@ if(isset($_POST['submit'])){
         $equipes["equipe3"]["PER."]+=1;
         $equipes["equipe2"]["G.F."]+=$_POST['equipe2-matche2'];
         $equipes["equipe3"]["G.C."]+=$_POST['equipe2-matche2'];
-    }elseif(@$_POST['equipe2-matche2'] < @$_POST['equipe3-matche2']){
+    }elseif($_POST['equipe2-matche2'] < $_POST['equipe3-matche2']){
         $equipes["equipe3"]["point"]+=3;
         $equipes["equipe2"]["PAR."]+=1;
         $equipes["equipe3"]["PAR."]+=1;
@@ -193,7 +193,7 @@ if(isset($_POST['submit'])){
         $equipes["equipe2"]["PER."]+=1;
         $equipes["equipe3"]["G.F."]+=$_POST['equipe3-matche2'];
         $equipes["equipe2"]["G.C."]+=$_POST['equipe3-matche2'];
-    }elseif(@$_POST['equipe2-matche2'] == @$_POST['equipe3-matche2']){
+    }elseif($_POST['equipe2-matche2'] == $_POST['equipe3-matche2']){
         $equipes["equipe2"]["point"]+=1;
         $equipes["equipe3"]["point"]+=1;
         $equipes["equipe2"]["PAR."]+=1;
@@ -202,10 +202,10 @@ if(isset($_POST['submit'])){
         $equipes["equipe3"]["EMP."]+=1;
     }
   //  ***************************************************************MATCHE5**********************************************************
-    if(@$_POST['equipe1-matche3'] ==''and @$_POST['equipe3-matche3']==''){
+    if($_POST['equipe1-matche3'] ==''and $_POST['equipe3-matche3']==''){
         $equipes["equipe1"]["point"]+=0;
         $equipes["equipe3"]["point"]+=0;
-    }elseif(@$_POST['equipe1-matche3'] > @$_POST['equipe3-matche3']){
+    }elseif($_POST['equipe1-matche3'] > $_POST['equipe3-matche3']){
         $equipes["equipe1"]["point"]+=3;
         $equipes["equipe1"]["PAR."]+=1;
         $equipes["equipe3"]["PAR."]+=1;
@@ -213,7 +213,7 @@ if(isset($_POST['submit'])){
         $equipes["equipe3"]["PER."]+=1;
         $equipes["equipe1"]["G.F."]+=$_POST['equipe1-matche3'];
         $equipes["equipe3"]["G.C."]+=$_POST['equipe1-matche3'];
-    }elseif(@$_POST['equipe1-matche3'] < @$_POST['equipe3-matche3']){
+    }elseif($_POST['equipe1-matche3'] < $_POST['equipe3-matche3']){
         $equipes["equipe3"]["point"]+=3; 
         $equipes["equipe1"]["PAR."]+=1;
         $equipes["equipe3"]["PAR."]+=1;
@@ -221,7 +221,7 @@ if(isset($_POST['submit'])){
         $equipes["equipe1"]["PER."]+=1;
         $equipes["equipe3"]["G.F."]+=$_POST['equipe3-matche3'];
         $equipes["equipe1"]["G.C."]+=$_POST['equipe3-matche3'];
-    }elseif(@$_POST['equipe1-matche3'] == @$_POST['equipe3-matche3']){
+    }elseif($_POST['equipe1-matche3'] == $_POST['equipe3-matche3']){
         $equipes["equipe1"]["point"]+=1;
         $equipes["equipe3"]["point"]+=1;
         $equipes["equipe1"]["PAR."]+=1;
@@ -230,10 +230,10 @@ if(isset($_POST['submit'])){
         $equipes["equipe3"]["EMP."]+=1;
     }
  //  *******************************************************************MATCHE6****************************************************
-    if(@$_POST['equipe2-matche3'] ==''and @$_POST['equipe4-matche3']==''){
+    if($_POST['equipe2-matche3'] ==''and $_POST['equipe4-matche3']==''){
         $equipes["equipe2"]["point"]+=0;
         $equipes["equipe4"]["point"]+=0;
-    }elseif(@$_POST['equipe2-matche3'] > @$_POST['equipe4-matche3']){
+    }elseif($_POST['equipe2-matche3'] > $_POST['equipe4-matche3']){
         $equipes["equipe2"]["point"]+=3;
         $equipes["equipe2"]["PAR."]+=1;
         $equipes["equipe4"]["PAR."]+=1;
@@ -241,7 +241,7 @@ if(isset($_POST['submit'])){
         $equipes["equipe4"]["PER."]+=1;
         $equipes["equipe2"]["G.F."]+=$_POST['equipe2-matche3'];
         $equipes["equipe4"]["G.C."]+=$_POST['equipe2-matche3'];
-    }elseif(@$_POST['equipe2-matche3'] < @$_POST['equipe4-matche3']){
+    }elseif($_POST['equipe2-matche3'] < $_POST['equipe4-matche3']){
         $equipes["equipe4"]["point"]+=3;
         $equipes["equipe2"]["PAR."]+=1;
         $equipes["equipe4"]["PAR."]+=1;
@@ -249,7 +249,7 @@ if(isset($_POST['submit'])){
         $equipes["equipe2"]["PER."]+=1;
         $equipes["equipe4"]["G.F."]+=$_POST['equipe4-matche3'];
         $equipes["equipe2"]["G.C."]+=$_POST['equipe4-matche3'];
-    }elseif(@$_POST['equipe2-matche3'] == @$_POST['equipe4-matche3']){
+    }elseif($_POST['equipe2-matche3'] == $_POST['equipe4-matche3']){
         $equipes["equipe2"]["point"]+=1;
         $equipes["equipe4"]["point"]+=1;
         $equipes["equipe2"]["PAR."]+=1;
